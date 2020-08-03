@@ -45,7 +45,7 @@ export default {
                 quantity: this.quantity
             }
             console.log(order);
-            //resert the order
+            //reset the order
             this.quantity = 0
             
         }
