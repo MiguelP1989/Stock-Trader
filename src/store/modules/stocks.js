@@ -9,6 +9,8 @@ const state = {
 
 const mutations = {
     'SET_STOCKS' (state, payload) {
+        console.log("payload", payload);
+        
         state.stocks = payload
     },
     // 'RND_STOCKS' (state) {
@@ -17,10 +19,11 @@ const mutations = {
 }
 
 const actions = {
-    // buyStock: ({commit}, payload) => {
-    //     commit()
-    // },
-    initStocks: ({commit}) => {
+    buyStock: ({commit}, payload) => {
+        console.log("payload in MODULES/STOCKS.JS", payload);
+        commit('BUY_STOCK', payload)
+    },
+    initStocks: ({commit}) => {  
         commit("SET_STOCKS", stocks)
     },
     // randomizeStocks: ({commit}) => {

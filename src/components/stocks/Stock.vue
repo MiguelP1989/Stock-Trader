@@ -19,7 +19,7 @@
                     <button 
                     class="btn btn-success"
                     @click="buyStock"
-                    :disabled="quantity <= 0 || !Number.isInteger(quantity)">BUY</button>
+                    :disabled="quantity <= 0 || Number.isInteger(quantity)">BUY</button>
                 </div>
             </div>
 
@@ -42,9 +42,10 @@ export default {
             const order = {
                 stockId: this.stock.id,
                 stockPrice: this.stock.price,
-                quantity: this.quantity
+                quantity: parseInt(this.quantity)
             }
-            console.log(order);
+            // console.log(order);
+            this.$store.dispatch('buyStock', order)
             //reset the order
             this.quantity = 0
             
