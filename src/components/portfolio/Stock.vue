@@ -3,8 +3,9 @@
         <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 clas="panel-title">
-                    {{stock.name}}
-                    <small>(Price: {{stock.price}} | Quantity: {{stock.quantity}})</small>
+                    {{stock.name}}<br>
+                    <small>Price: {{stock.price}} £</small><br>
+                    <small>Quantity: {{stock.quantity}}</small>
                 </h3>
             </div>
             <div class="panel-body">
@@ -19,7 +20,7 @@
                     <button 
                     class="btn btn-success"
                     @click="sellStock"
-                    :disabled="quantity <= 0 || !Number.isInteger(quantity)">SELL</button>
+                    :disabled="quantity <= 0 || Number.isInteger(quantity)">SELL</button>
                 </div>
             </div>
 

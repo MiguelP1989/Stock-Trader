@@ -19,7 +19,9 @@
                     <button 
                     class="btn btn-success"
                     @click="buyStock"
-                    :disabled="quantity <= 0 || Number.isInteger(quantity)">BUY</button>
+                    :disabled="insufficientFunds || quantity <= 0 || !numberIsInteger(quantity)"
+                    :class="{'changeColor': insufficientFunds}"
+                    >{{ insufficientFunds ? 'insufficientFunds' : "Buy" }} </button>
                 </div>
             </div>
 
@@ -37,6 +39,18 @@ export default {
             quantity: 0
         }
     },
+    computed:{
+        funds() {
+            return this.$store.getters.funds
+        },
+        insufficientFunds() {
+            if (this.quantity * this.stock.price > this.funds) {
+        
+                return true       
+               
+            }
+        }
+    },
     methods: {
         buyStock() {
             const order = {
@@ -49,7 +63,25 @@ export default {
             //reset the order
             this.quantity = 0
             
+        },
+        numberIsInteger(value) {
+            return Number.isInteger(Number(value))
         }
     }
+    
 }
 </script>
+
+
+<style scoped>
+
+.changeColor {
+    border: none;
+    background-color: red;
+   
+}
+.changeColor:hover {
+    background-color: red;
+} 
+
+</style>
