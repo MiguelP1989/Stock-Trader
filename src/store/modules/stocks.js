@@ -13,9 +13,12 @@ const mutations = {
         
         state.stocks = payload
     },
-    // 'RND_STOCKS' (state) {
-
-    // }
+    'RND_STOCKS' (state) {
+        state.stocks.forEach(stock => {
+            console.log("stock in RND_STOCK", stock);
+            stock.price = Math.round(stock.price * (1 + Math.random() - 0.5))
+        })
+    }
 }
 
 const actions = {
@@ -26,9 +29,9 @@ const actions = {
     initStocks: ({commit}) => {  
         commit("SET_STOCKS", stocks)
     },
-    // randomizeStocks: ({commit}) => {
-    //     commit('RND_STOCKS')
-    // }
+    randomizeStocks: ({commit}) => {
+        commit('RND_STOCKS')
+    }
 }
 
 const getters = {
