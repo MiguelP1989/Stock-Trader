@@ -1,6 +1,6 @@
 <template>
     <div class="col-sm-6 col-md-4">
-        <div class="panel panel-success">
+        <div class="panel panel-info">
             <div class="panel-heading">
                 <h3 clas="panel-title">
                     {{stock.name}}
@@ -19,7 +19,7 @@
                     <button 
                     class="btn btn-success"
                     @click="sellStock"
-                    :disabled="quantity <= 0 || Number.isInteger(quantity)">SELL</button>
+                    :disabled="quantity <= 0 || !Number.isInteger(quantity)">SELL</button>
                 </div>
             </div>
 
@@ -30,6 +30,9 @@
 
 
 <script>
+
+// import {mapActions} from vuex
+
 export default {
     props: ['stock'],
     data() {
@@ -38,13 +41,19 @@ export default {
         }
     },
     methods: {
+    // ...mapActions([
+    //     placeSellOrder : 'sellStock'
+    // ]),
      sellStock() {
          const order = {
              stockId: this.stock.id,
-             stockprice: this.stock.price,
-             quantity: this.quantity
+             stockPrice: this.stock.price,
+             quantity: parseInt(this.quantity)
          }
+         console.log("order", order);
+        //  this.placeSellOrder(record)
         this.$store.dispatch('sellStock', order)
+        this.quantity = 0
      }
     }
 }
