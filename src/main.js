@@ -7,6 +7,7 @@ import {store} from "./store/store"
 import { routes } from "./routes"
 
 
+
 Vue.use(VueRouter);
 Vue.use(VueResource)
 

@@ -27,11 +27,11 @@ const mutations = {
     },
     'SELL_STOCK' (state, payload) {
 
-        console.log("payload in sell_stock", payload);
+        // console.log("payload in sell_stock", payload);
         
         const record = state.stocks.find(el => el.id === payload.stockId)
 
-        console.log("record in SELL_STOCK", record);
+        // console.log("record in SELL_STOCK", record);
         
         if (record.quantity > payload.quantity) {
             record.quantity -= payload.quantity
@@ -43,7 +43,14 @@ const mutations = {
         
         state.funds += payload.stockPrice * payload.quantity
 
-         console.log("state in portfolio", state);
+        //  console.log("state in portfolio", state);
+    },
+    "SET_PORTFOLIO" (state, payload) {
+
+        console.log("SET_PORTFOLIO", payload);
+        
+        state.funds = payload.funds
+        state.stocks = payload.stockPortfolio ? payload.stockPortfolio : []
     }
 }
 
@@ -56,7 +63,7 @@ const actions = {
 
 const getters = {
     stockPortfolio (state, payload) {
-        console.log("payload in stockportfolio", payload);
+        // console.log("payload in stockportfolio", payload);
         
         return state.stocks.map(stock => {
             // console.log("stockkkks", stock);

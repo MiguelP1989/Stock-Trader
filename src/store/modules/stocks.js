@@ -9,7 +9,7 @@ const state = {
 
 const mutations = {
     'SET_STOCKS' (state, payload) {
-        console.log("payload", payload);
+        console.log("SET_STOCKS", payload);
         
         state.stocks = payload
     },
@@ -23,7 +23,7 @@ const mutations = {
 
 const actions = {
     buyStock: ({commit}, payload) => {
-        console.log("payload in MODULES/STOCKS.JS", payload);
+        // console.log("payload in MODULES/STOCKS.JS", payload);
         commit('BUY_STOCK', payload)
     },
     initStocks: ({commit}) => {  
