@@ -1,3 +1,7 @@
+# Stock Trader
+
+> online: http://vuejs-stock.trader.s3-website.eu-central-1.amazonaws.com
+
 # vue-cli
 
 > A Vue.js project
